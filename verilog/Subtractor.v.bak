@@ -1,0 +1,21 @@
+// subtractor for four bit number made of four full adders its similar to the adder but the B is negated and the carry should be 1 
+module Subtractor (sum,carryout,A,B,c);
+//inputs and outputs
+input c  ;
+input[3:0] A,B ;
+output carryout;
+output [3:0]sum;
+wire c1,c2,c3;
+//here i will be using not gate instead of simply saying ~B to keep it structural
+
+wire [3:0] notB;
+not (notB[0],B[0]);
+not (notB[1],B[1]);
+not (notB[2],B[2]);
+not (notB[3],B[3]);
+//instantiate four full adders
+FA num1 (sum[0],c1,A[0],notB[0],c);
+FA num2 (sum[1],c2,A[1],notB[1],c1);
+FA num3 (sum[2],c3,A[2],notB[2],c2);
+FA num4 (sum[3],carryout,A[3],notB[3],c3);
+endmodule 

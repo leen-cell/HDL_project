@@ -1,0 +1,19 @@
+module dataflowALU (Result,carrysum,carrysub,A,B,c,OpCode);
+//note that the process of choosing the operation will work perfectly as 4 to 1 MUX because in the four cases the MSB is zero
+input [3:0] A,B;
+input c ;
+input [2:0] OpCode;
+output carrysum,carrysub;
+output [3:0] Result ;
+wire [3:0] wireand,wireor,wireadd,wiresub ;
+AndGate (wireand,A,B);
+OrGate (wireor,A,B);
+Adder (wireadd,carrysum,A,B,c);
+Subtractor (wiresub,carrysub,A,B,c);
+assign Result = (OpCode==3'b000)? wireadd :
+(OpCode==3'b001)? wiresub :
+(OpCode==3'b010)? wireand : 
+(OpCode==3'b011)? wireor :4'bz ; /*the conditional operator does not include all possible cases so we say that the 
+other cases are z which means its lika an open circuit (no signal) */
+   
+endmodule

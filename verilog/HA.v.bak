@@ -1,0 +1,6 @@
+module HA (sum,c,A,B);
+output sum,c;
+input A,B;
+xor (sum,A,B);
+and (c,A,B);
+ endmodule
