@@ -38,8 +38,6 @@ Each operation was tested through waveform simulations.
 
 All modules were verified using testbenches. Waveforms are provided in the `waveform_images/` folder to show operation results.
 
-##  Example Waveform (Addition)
-![Adder Waveform](waveform_images/adder.png)
 
 ## Tools Used
 
